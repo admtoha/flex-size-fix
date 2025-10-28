@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<meta charset='UTF-8'>
+		
+		<meta name='viewport' content='width=device-width, maximum-scale=1.0, minimum-scale=1.0'>
+		
+		<style>
+			
+			body{
+				background: #EEAECA;
+				background: radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+				text-align: center;
+			}
+			
+			.demo{
+				box-shadow: 0 2px 4px 2px rgba(0, 0, 0, .4) inset, 0 7px 13px -3px rgba(0, 0, 0, .3) inset, 0 -3px 0 rgba(0, 0, 0, .17);
+				padding: 1rem;
+				border-radius: .4rem;
+				margin: 1rem;
+				> *{
+					margin: .5rem;
+					border-radius: .4rem;
+					background-color: color-mix(in srgb, var(--color) 50%, white);
+					box-shadow: 0 2px 4px 2px rgba(0, 0, 0, .4), 0 7px 13px -3px rgba(0, 0, 0, .3), 0 -3px 0 inset rgba(0, 0, 0, .17);
+					padding: 1rem;
+					height: var(--height);
+					width: var(--width);
+				/*	align-self: center; */
+					text-align: center;
+					color: white;
+					font-weight: bolder;
+					text-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+				}
+				:nth-child(1){
+					--color: green;
+					--height: 10rem;
+					--width: 8rem;
+				}
+				:nth-child(2){
+					--color: red;
+					--height: 14rem;
+					--width: 9rem;
+				}
+				:nth-child(3){
+					--color: violet;
+					--height: 18rem;
+					--width: 12rem;
+				}
+				:nth-child(4){
+					--color: brown;
+					--height: 8rem;
+					--width: 13rem;
+				}
+				:nth-child(5){
+					--color: pink;
+					--height: 14rem;
+					--width: 12rem;
+				}
+				:nth-child(6){
+					--color: purple;
+					--height: 8rem;
+					--width: 13rem;
+				}
+				:nth-child(7){
+					--color: orange;
+					--height: 9rem;
+					--width: 13rem;
+				}
+				:nth-child(8){
+					--color: black;
+					--height: 16rem;
+					--width: 9rem;
+				}
+			}
+			
+			.float_left{
+				overflow: auto;
+				> *{
+					float: left;
+				}
+				&::after{
+					clear: both;
+				}
+			}
+			
+			.flex_row_wrap{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-evenly;
+			}
+			
+			.columns_count{
+				column-count: 4;
+				column-gap: 0;
+				> *{
+					display: inline-block;
+				}
+			}
+			
+		</style>
+		
+		<script language="JavaScript" src="./flex_size_fix.js"></script>
+		
+		<script language="JavaScript">
+			
+			let demo_node;
+			
+			window.addEventListener('load', () => {
+				demo_node = document.getElementById('demo');
+				[...demo_node.childNodes].forEach(child => child.nodeName === '#text' && demo_node.removeChild(child));
+			});
+			
+			const width_ls = [ '80%', '60%', '40%', 'unset' ];
+			
+			let width_ind = 0;
+			
+			const change_width = () => {
+				demo_node.style.width = width_ls[ width_ind++ ];
+				if(width_ind === width_ls.length) width_ind = 0;
+			};
+			
+			const delete_item = () => {
+				if(demo_node.childNodes.length === 1) return;
+				demo_node.removeChild(demo_node.lastChild);
+			};
+			
+			const add_item = () => {
+				if(demo_node.childNodes.length === 8) return;
+				let new_el;
+				demo_node.append(new_el = document.createElement('div'));
+				new_el.innerText = demo_node.childNodes.length;
+			};
+			
+			let change_item_size_fl = false;
+			
+			const change_item_size = () => {
+				if(demo_node.childNodes.length === 1) return;
+				demo_node.childNodes[1].style.height = change_item_size_fl ? '14rem' : '28rem';
+				demo_node.childNodes[1].style.width = change_item_size_fl ? '6rem' : '12rem';
+				change_item_size_fl = change_item_size_fl ? false : true;
+			};
+			
+			const create_new_demo = () => {
+				const new_demo = document.createElement('div');
+				new_demo.setAttribute('data-flex-size-fix', true);
+				new_demo.className = 'demo';
+				for(let i = 0; i < 8; i++){ 
+					const el = document.createElement('div');
+					el.innerText = i;
+					new_demo.append(el);
+				}
+				//document.body.append(document.createElement('br'), new_demo);
+				document.body.insertBefore(new_demo, demo_node.nextSibling);
+			};
+			
+		</script>
+		
+		<title> Flex-Size-Fix Demo Example </title>
+	
+	</head>
+	
+	<body>
+		
+		<h1> Flex-Size-Fix Demo Example</h1>
+		
+		<button onclick='change_width()'>Change Width</button>
+		<button onclick='delete_item()'>Delete Item</button>
+		<button onclick='add_item()'>Add Item</button>
+		<button onclick='change_item_size()'>Change Item's Size</button>
+		<button onclick='create_new_demo()'>Create New Demo</button>
+		
+		<br><br>
+		
+		<div data-flex-size-fix class='demo' id='demo'>			
+			<div> 1 </div>
+			<div> 2 </div>
+			<div> 3 </div>
+			<div> 4 </div>
+			<div> 5 </div>
+			<div> 6 </div>
+			<div> 7 </div>
+			<div> 8 </div>
+		</div>
+		
+		<br><br>
+		<br><br>
+		
+		<h1> Other Ways </h1>
+		
+		<h2> float: left </h2>
+		<div class='demo float_left'>
+			<div> 1 </div>
+			<div> 2 </div>
+			<div> 3 </div>
+			<div> 4 </div>
+			<div> 5 </div>
+			<div> 6 </div>
+			<div> 7 </div>
+			<div> 8 </div>
+		</div>
+		
+		
+		<br><br>
+		<h2> flex-flow: row wrap </h2>
+		<div class='demo flex_row_wrap'>
+			<div> 1 </div>
+			<div> 2 </div>
+			<div> 3 </div>
+			<div> 4 </div>
+			<div> 5 </div>
+			<div> 6 </div>
+			<div> 7 </div>
+			<div> 8 </div>
+		</div>
+		
+		
+		<br><br>
+		<h2> column-count: 4 </h2>
+		<div class='demo columns_count'>
+			<div> 1 </div>
+			<div> 2 </div>
+			<div> 3 </div>
+			<div> 4 </div>
+			<div> 5 </div>
+			<div> 6 </div>
+			<div> 7 </div>
+			<div> 8 </div>
+		</div>
+	
+	</body>
+
+</html>
