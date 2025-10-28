@@ -15,7 +15,7 @@ In reality, as of today (2025), distributing blocks of different sizes is not a 
 ```html
 <script language="JavaScript" src="./flex_size_fix.js"></script>
 ```
-4.  Mark the target containers using the "data-flex-size-fix" attribute:
+3.  Mark the target containers using the "data-flex-size-fix" attribute:
 ```html
 ...
 <div data-flex-size-fix>
