@@ -11,15 +11,18 @@ In reality, as of today (2025), distributing blocks of different sizes is not a 
 <h2>How to Use:</h2>
 
 1.  Download the script "flex_size_fix.js".
-2.  Include the script in your page, for example:<pre>
-    &lt;script language="JavaScript" src="./flex_size_fix.js"&gt; &lt;/script&gt; </pre>
-3.  Mark the target containers using the "data-flex-size-fix" attribute:<pre>
-    ...
-    &lt;div data-flex-size-fix&gt; 
-    ...
-    &lt;/div&gt; 
-    ...</pre>
-
+2.  Include the script in your page, for example:
+```html
+<script language="JavaScript" src="./flex_size_fix.js"></script>
+```
+4.  Mark the target containers using the "data-flex-size-fix" attribute:
+```html
+...
+<div data-flex-size-fix>
+...
+</div>
+...
+```
 Next to the script, you'll find an interactive example/demonstration file. You can download it, place it in the same directory as the script, and observe the script in action.
 
 <h2>How it Works</h2>
