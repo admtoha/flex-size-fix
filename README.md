@@ -10,7 +10,7 @@ In reality, as of today (2025), distributing blocks of different sizes is not a 
 
 <h2>How to Use:</h2>
 
-1.  Download the script.
+1.  Download the script "flex_size_fix.js".
 2.  Include the script in your page, for example:<pre>
     &lt;script language="JavaScript" src="./flex_size_fix.js"&gt; &lt;/script&gt; </pre>
 3.  Mark the target containers using the "data-flex-size-fix" attribute:<pre>
