@@ -8,7 +8,7 @@ In reality, as of today (2025), distributing blocks of different sizes is not a 
  - Responsiveness to dynamic page changes (container resizing, adding/removing/changing internal container blocks);
  - Minimal script impact to retain almost the full set of native CSS customization tools.
 
-<h2>How to Use:</h2>
+<h2>How to Use</h2>
 
 1.  Download the script "flex_size_fix.js".
 2.  Include the script in your page, for example:
