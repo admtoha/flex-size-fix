@@ -1,5 +1,5 @@
 # flex-size-fix
-A Script for Evenly Distributing Blocks of Different Sizes
+A Script for Evenly Distributing Blocks of Different Sizes (HTML / CSS / JavaScript)
 
 In reality, as of today (2025), distributing blocks of different sizes is not a trivial task.  To achieve:
 
