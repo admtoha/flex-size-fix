@@ -23,7 +23,7 @@ In reality, as of today (2025), distributing blocks of different sizes is not a 
 </div>
 ...
 ```
-Next to the script, you'll find an interactive example/demonstration file. You can download it, place it in the same directory as the script, and observe the script in action.
+Next to the script, you'll find an interactive example/demonstration file "demo_example_flex_size_fix.html". You can download it, place it in the same directory as the script, and observe the script in action.
 
 <h2>How it Works</h2>
 
