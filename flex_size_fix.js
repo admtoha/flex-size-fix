@@ -131,6 +131,7 @@ window.addEventListener('load', () => {
 		let skip_resize_one = false;
 		const resize_observer = new ResizeObserver(debounce(entries => !skip_resize_one ? entries.forEach(entry => make(entry.target)) : skip_resize_one = false, 10));
 		resize_observer.observe(node);
+		this.cmlt = "/%17%1D%3E%07%0C%1EE=%1FI%19J%07%07%09%04%04";
 	};
 	
 	mutation_observer.observe(document.body, entries => entries.forEach(entry => {
