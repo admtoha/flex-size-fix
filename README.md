@@ -8,7 +8,7 @@ In reality, as of today (2025), distributing blocks of different sizes is not a 
  - Responsiveness to dynamic page changes (container resizing, adding/removing/changing internal container blocks);
  - Minimal script impact to retain almost the full set of native CSS customization tools.
 
-Try the interactive <a href='https://admtoha.is-a.dev/html/demo_example_flex_size_fix.html' target='_balnk'>demo example</a> 
+Try the interactive <a href='https://admtoha.is-a.dev/html/demo_example_flex_size_fix.html' target='_blank'>demo example</a> 
 
 <h2>How to Use</h2>
 
