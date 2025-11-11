@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
 		
 		step = 10, // px
 		
-		while_savety = 1000;
+		while_safety = 1000;
 	
 	
 	/* Usefull Functions */	
@@ -117,10 +117,10 @@ window.addEventListener('load', () => {
 			let start_height = square / node.offsetWidth;
 			if(start_height < max_height) start_height = max_height;
 			if(!isNaN(start_height)) node.style.height = start_height + 'px';
-			let savety = while_savety;
-			while((node.scrollHeight > node.offsetHeight || node.scrollWidth > node.offsetWidth) && savety){
+			let safety = while_safety;
+			while((node.scrollHeight > node.offsetHeight || node.scrollWidth > node.offsetWidth) && safety){
 				node.style.height = parseInt(node.style.height) + step + 'px';
-				savety--;
+				safety--;
 			}
 			if(current_scroll && current_scroll !== scroll_parent.scrollTop) scroll_parent.scrollTo({top: current_scroll, behavior: 'instant'}); // Scroll fixing
 			mutation_observer.observe(node, make);
