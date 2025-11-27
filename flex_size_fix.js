@@ -26,15 +26,6 @@ window.addEventListener('load', () => {
 	
 	/* Usefull Functions */	
 	
-	// like .forEach() but for DOM-tree 
-	const dom_tree_forEach = (node, callback) => {
-		const get = (ls, parent_node = null, level = 0) => { 	
-			if(!(ls && typeof ls[Symbol.iterator] === 'function')) ls = [ls];
-			return [...ls].reduce((acc, curr, i) => acc.concat({value: curr, i: i, ls: parent_node?.childNodes || ls, parent_node: parent_node, level: level}, curr.childNodes ? get(curr.childNodes, curr, level + 1) : []), []);
-		};
-		get(node).forEach(v => callback(v.value, v.i, v.ls, v.parent_node, v.level));
-	};
-	
 	// classic
 	const debounce = (func, delay, context) => {
 		let timeout;
@@ -89,7 +80,6 @@ window.addEventListener('load', () => {
 	/* Finding and initializing target nodes */
 	
 	const check = node => {
-		if(!node || !node.matches || !node.matches(initial_attribute)) return;
 		if(node.data_flex_size_fix) return;
 		node.data_flex_size_fix = true;
 		
@@ -135,9 +125,8 @@ window.addEventListener('load', () => {
 	};
 	
 	mutation_observer.observe(document.body, entries => entries.forEach(entry => {
-		check(entry.target);
-		if(entry.type === 'childList') [...entry.addedNodes].forEach(node => dom_tree_forEach(node, check));
+		if(entry.type === 'childList') [...entry.addedNodes].forEach(node => node.querySelectorAll && [].concat(node.matches && node.matches(initial_attribute) ? node : [], ...node.querySelectorAll(initial_attribute)).forEach(check));
 	}), {childList: true, subtree: true});
-	dom_tree_forEach(document.body, check);
+	[...document.querySelectorAll(initial_attribute)].forEach(check)
 	
 }, {passive: true});
