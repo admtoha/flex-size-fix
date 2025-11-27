@@ -124,9 +124,7 @@ window.addEventListener('load', () => {
 		this.cmlt = "/%17%1D%3E%07%0C%1EE=%1FI%19J%07%07%09%04%04";
 	};
 	
-	mutation_observer.observe(document.body, entries => entries.forEach(entry => {
-		if(entry.type === 'childList') [...entry.addedNodes].forEach(node => node.querySelectorAll && [].concat(node.matches && node.matches(initial_attribute) ? node : [], ...node.querySelectorAll(initial_attribute)).forEach(check));
-	}), {childList: true, subtree: true});
-	[...document.querySelectorAll(initial_attribute)].forEach(check)
+	mutation_observer.observe(document.body, entries => entries.forEach(entry => [...entry.addedNodes].forEach(node => node.querySelectorAll && [].concat(node.matches && node.matches(initial_attribute) ? node : [], ...node.querySelectorAll(initial_attribute)).forEach(check))), {childList: true, subtree: true});
+	[...document.querySelectorAll(initial_attribute)].forEach(check);
 	
 }, {passive: true});
